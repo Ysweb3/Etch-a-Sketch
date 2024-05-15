@@ -1,24 +1,27 @@
 const container = document.getElementById("container");
 const rowContainer = document.getElementById("row-container");
-let rowH = document.getElementById("row");
-let columnH = document.getElementById("column");
-
-function createGrid(){
-    createGrid(5);
-  
-}
+const cell = document.getElementById("cell");
 
 
 function createGrid(a) {
-    for (i = 0; i < (a * a); i++){
-        let row = document.createElement("div");
-        container.appendChild(row).id = "row";
+    for (i = 0; i < (a); i++){
+        let newrowContainer = document.createElement("div");
+        container.appendChild(newrowContainer).id = "row-container"
+        for (let j = 0; j < a; j++) {
+            let cell = document.createElement("div");
+            newrowContainer.appendChild(cell).id = "cell";      
+        }
     };
+
 }
 
 function createColumn(colNum){
 
 
 }
+createGrid(26);
 
-createGrid();
+cell.addEventListener("hover",() => {
+    console.log("HELLO")
+    cell.style.backgroundColor = "red";
+});
