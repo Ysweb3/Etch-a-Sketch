@@ -1,0 +1,28 @@
+h1{
+    display: flex;
+    justify-content: center;
+}
+#container{
+    display: flex;
+    border: 2px solid;
+    padding: 0px;
+    justify-content: center;
+    
+       
+}
+#cell{
+    height: 5px;
+    width: 5px;
+    margin: 0px;
+    fill: aqua;
+    border: solid;
+    border-color: royalblue;
+}
+#border{
+    display: flex;
+    border: 2px solid;
+    padding: 0px;
+    justify-content: center;
+    
+}
+
