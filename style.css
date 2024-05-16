@@ -5,19 +5,22 @@ h1{
 #container{
     display: flex;
     border: 2px solid;
-    max-width: 400px;
-    max-height: 400px;
+    width: 801px;
+    height: 801px;
+    position: relative;
 
     
 }
 #cell{
-    height: 10px;
-    width: 10px;
+    height: 55px;
+    width: 55px;
     margin: 0px;
     color: rgb(30, 45, 59);
+    background-color: rgb(138, 138, 138)
     
 }
 #border{
+    
     display: flex;
     justify-content: center;
     
