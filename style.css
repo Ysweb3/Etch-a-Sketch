@@ -4,23 +4,20 @@ h1{
 }
 #container{
     display: flex;
-    border: 2px solid;
-    width: 801px;
-    height: 801px;
-    position: relative;
+    border: 5px solid;
+    width: 800px;
+    height: 800px;
 
     
 }
 #cell{
-    height: 55px;
-    width: 55px;
+    
     margin: 0px;
     color: rgb(30, 45, 59);
-    background-color: rgb(138, 138, 138)
+    background-color: rgb(255, 255, 255)
     
 }
 #border{
-    
     display: flex;
     justify-content: center;
     

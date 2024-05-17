@@ -3,14 +3,16 @@ const rowContainer = document.querySelector("#row-container");
 const cell = document.getElementById("cell");
 const sizeSlider = document.getElementById("grid-size");
 const sizeSliderOutput = document.getElementById("slider-value");
-const sizeBtn = document.getElementById("Change-Btn");
 const resetBTn = document.getElementById("Reset-Btn");
 const allCells = document.getElementById("#cell");
+const colorPicker = document.querySelector("#color-input");
+
+//Default values
 const canvasSize = 800;
 let gridValue;
-let color = "Black";
+let color ="#000000";
 
-
+//Functions
 function CreateGrid(a) {
     console.log(a);
     for (i = 0; i < (a); i++){
@@ -24,44 +26,46 @@ function CreateGrid(a) {
         }
     };
 }
-
 function GridColor(color){
-    
     const allCells = document.querySelectorAll("#cell");
     allCells.forEach(box => {
-    box.addEventListener("mouseover", () => {
-    box.style.backgroundColor = color; 
-});
-  });
+        box.addEventListener("mouseover", () => {
+            box.style.backgroundColor = color; 
+        });
+    });
 }
-
 function ClearCanvas(){
     container.innerHTML= "";
 }
-
 function CreateCanvas(size){
     ClearCanvas();
     CreateGrid(size);
     GridColor(color)
-    
 }
-function Slidervalue(){
-    sizeSlider.onchange = (e) => {
-    let vlaue = e.target.value;
-    CreateCanvas(vlaue);
-    sizeSliderOutput.textContent = sizeSlider.value;
-    }
-    return value;
-}   
 
+CreateCanvas(16);
 
-
-resetBTn.addEventListener("click", () => {
-    CreateCanvas(value)
-    
+//Events
+colorPicker.addEventListener("input" , (e) =>{
+    color = e.target.value;
+    console.log(color);
+    GridColor(color)
 });
 
-value = Slidervalue()
+sizeSlider.onchange = (e) => {
+    let vlaue = e.target.value;
+    CreateCanvas(vlaue);
+    sizeSliderOutput.textContent = sizeSlider.value+"x"+sizeSlider.value ;
+}
+
+resetBTn.addEventListener("click", () => {
+    const allCells = document.querySelectorAll("#cell");
+    allCells.forEach(box => {
+        box.style.backgroundColor = "white"; 
+    })
+});
+
+
 
 
 
