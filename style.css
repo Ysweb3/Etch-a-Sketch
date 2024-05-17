@@ -22,4 +22,16 @@ h1{
     justify-content: center;
     
 }
+#eraser-div{
+    height: 20px;
+    width: 50px;
+}
+input#eraser{
+    height: 50px;
+    width: 50px;
+    
+}
+#eraser:checked +#eraser-div{
+    transform: scale(1.2);
+    background-color:#b3e691}
 

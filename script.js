@@ -6,11 +6,34 @@ const sizeSliderOutput = document.getElementById("slider-value");
 const resetBTn = document.getElementById("Reset-Btn");
 const allCells = document.getElementById("#cell");
 const colorPicker = document.querySelector("#color-input");
+const eraserCheckbox = document.querySelector("#eraser");
+const eraserLable = document.querySelector("#eraser-label");
 
 //Default values
 const canvasSize = 800;
 let gridValue;
+let prevColor = "#000000";
 let color ="#000000";
+
+eraserCheckbox.addEventListener("change", () => {   
+    if(eraserCheckbox.checked){
+        eraserLable.textContent = "Eraser ON ";
+        prevColor = color;
+        color = "#FFFFFF";
+        console.log("COLOR"+color);
+        console.log("PREV COLOR"+prevColor);
+        GridColor(color)
+    }
+    else{
+        eraserLable.textContent = "Eraser OFF "
+        color = prevColor;
+        GridColor(prevColor);
+        console.log("PREV COLOR"+prevColor);
+    }
+
+});
+
+
 
 //Functions
 function CreateGrid(a) {
@@ -27,6 +50,7 @@ function CreateGrid(a) {
     };
 }
 function GridColor(color){
+    
     const allCells = document.querySelectorAll("#cell");
     allCells.forEach(box => {
         box.addEventListener("mouseover", () => {
@@ -49,6 +73,7 @@ CreateCanvas(16);
 colorPicker.addEventListener("input" , (e) =>{
     color = e.target.value;
     console.log(color);
+    console.log(prevColor);
     GridColor(color)
 });
 
