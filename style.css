@@ -22,6 +22,10 @@ h1{
     justify-content: center;
     
 }
+#input-container{
+    display:  flex;
+    justify-content: center;
+}
 #eraser-div{
     height: 20px;
     width: 50px;
@@ -33,5 +37,20 @@ input#eraser{
 }
 #eraser:checked +#eraser-div{
     transform: scale(1.2);
-    background-color:#b3e691}
+    background-color:#e6ca91
+}
+
+#rainbow-div{
+    height: 20px;
+    width: 60px;
+}
+input#rainbow{
+    height: 50px;
+    width: 50px;
+        
+}
+#rainbow:checked +#rainbow-div{
+    transform: scale(1.2);
+    background-color:#b3e691
+}
 

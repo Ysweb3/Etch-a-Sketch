@@ -9,23 +9,35 @@
 </head>
 <body>
     <h1><strong>Etch-a-Sketch</strong></h1>
-    <input type="range" min="16" max="100" value="16" id="grid-size">
-    <div id="slider-value">16x16</div>
-    <button id="Reset-Btn">Clear Canvas</button>
-    <input type="color" id="color-input" value="#000000">
-    <label for="color-input" id="color-display">Select color</label>
-    <input type="checkbox" id="eraser">
-    <div id="eraser-div">
-    <label for="eraser" id="eraser-label">Eraser</label>
-    </div>  
+    <div id="input-container">
+        <div>
+            <input type="range" min="16" max="100" value="16" id="grid-size">
+            <div id="slider-value">16x16</div>
+        </div>
+        <div>
+            <input type="checkbox" id="rainbow">
+            <div id="rainbow-div">
+                <label for="rainbow" id="rainbow-label">Rainbow</label>
+            </div>
+        </div>
+        <div>
+            <button id="Reset-Btn">Clear Canvas</button>
+        </div>
+        <div>
+            <input type="color" id="color-input" value="#000000">
+            <div>Select color</div>
+        </div>
+        <div>
+            <input type="checkbox" id="eraser">
+            <div id="eraser-div">
+                <label for="eraser" id="eraser-label">Eraser</label>
+            </div>
+        </div>  
+    </div>
     <div id="border">
     <div id="container">
-    
         <!--Grid goes here-->
-        
-
     </div>
-
 </div>
 <script src="script.js"></script>
 </body>

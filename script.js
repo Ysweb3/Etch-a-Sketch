@@ -1,3 +1,4 @@
+//FIX RAINBOW BUG
 const container = document.querySelector("#container");
 const rowContainer = document.querySelector("#row-container");
 const cell = document.getElementById("cell");
@@ -8,31 +9,14 @@ const allCells = document.getElementById("#cell");
 const colorPicker = document.querySelector("#color-input");
 const eraserCheckbox = document.querySelector("#eraser");
 const eraserLable = document.querySelector("#eraser-label");
+const rainbowCheckbox = document.querySelector("#rainbow");
 
 //Default values
 const canvasSize = 800;
 let gridValue;
-let prevColor = "#000000";
-let color ="#000000";
-
-eraserCheckbox.addEventListener("change", () => {   
-    if(eraserCheckbox.checked){
-        eraserLable.textContent = "Eraser ON ";
-        prevColor = color;
-        color = "#FFFFFF";
-        console.log("COLOR"+color);
-        console.log("PREV COLOR"+prevColor);
-        GridColor(color)
-    }
-    else{
-        eraserLable.textContent = "Eraser OFF "
-        color = prevColor;
-        GridColor(prevColor);
-        console.log("PREV COLOR"+prevColor);
-    }
-
-});
-
+let prevColor = "000000";
+let color ="000000";
+let colorBackup= "";
 
 
 //Functions
@@ -49,32 +33,54 @@ function CreateGrid(a) {
         }
     };
 }
-function GridColor(color){
-    
+function GridColor(color,rainbow){
+    if(rainbow == false){
     const allCells = document.querySelectorAll("#cell");
     allCells.forEach(box => {
         box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = color; 
+            box.style.backgroundColor = "#"+color;
+            
         });
     });
+    }
+    else if (rainbow == true){ 
+        const allCells = document.querySelectorAll("#cell");
+        allCells.forEach(box => {
+            box.addEventListener("mouseover", () => {
+            box.style.backgroundColor = "#"+RandomColor(); 
+            console.log("Rainbow")
+            });
+        });
+
+    }
 }
 function ClearCanvas(){
     container.innerHTML= "";
+    
 }
 function CreateCanvas(size){
     ClearCanvas();
     CreateGrid(size);
-    GridColor(color)
+    GridColor(color,false);
+}
+
+function RandomColor(){
+    color = Math.floor(Math.random()*16777215).toString(16);
+    return color;
+
 }
 
 CreateCanvas(16);
 
 //Events
 colorPicker.addEventListener("input" , (e) =>{
-    color = e.target.value;
+    let tempColor = e.target.value;
+    color = tempColor.replace("#" ,"");
+    colorBackup = color;
     console.log(color);
     console.log(prevColor);
-    GridColor(color)
+    GridColor(color,false);
+    eraserCheckbox.checked = false;
 });
 
 sizeSlider.onchange = (e) => {
@@ -88,6 +94,36 @@ resetBTn.addEventListener("click", () => {
     allCells.forEach(box => {
         box.style.backgroundColor = "white"; 
     })
+});
+
+eraserCheckbox.addEventListener("change", () => {   
+    if(eraserCheckbox.checked){
+        prevColor = color;
+        color = "FFFFFF";
+        
+        GridColor(color,false)
+        rainbowCheckbox.checked = false;
+    }
+    else{
+        color = prevColor;
+        GridColor(color,false);
+        
+    }
+
+});
+
+rainbowCheckbox.addEventListener("change", () => {   
+    if(rainbowCheckbox.checked){
+        prevColor = color;
+        GridColor(color,true);
+        eraserCheckbox.checked = false;
+    }
+    else{
+        color = prevColor;
+        GridColor(prevColor,false);
+        
+    }
+
 });
 
 
