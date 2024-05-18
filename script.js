@@ -1,4 +1,5 @@
 //FIX RAINBOW BUG
+
 const container = document.querySelector("#container");
 const rowContainer = document.querySelector("#row-container");
 const cell = document.getElementById("cell");
@@ -17,7 +18,7 @@ let gridValue;
 let prevColor = "000000";
 let color ="000000";
 let colorBackup= "";
-
+let opacity = 0;
 
 //Functions
 function CreateGrid(a) {
@@ -33,21 +34,21 @@ function CreateGrid(a) {
         }
     };
 }
-function GridColor(color,rainbow){
-    if(rainbow == false){
+function GridColor(color,effect){
+    if(effect == "none"){
     const allCells = document.querySelectorAll("#cell");
-    allCells.forEach(box => {
+    allCells.forEach(box => {   
         box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = "#"+color;
+            box.style.backgroundColor = "#"+color;     
             
         });
     });
     }
-    else if (rainbow == true){ 
+    else if (effect == "rainbow"){ 
         const allCells = document.querySelectorAll("#cell");
         allCells.forEach(box => {
             box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = "#"+RandomColor(); 
+            box.style.backgroundColor = "#"+RandomColor();     
             console.log("Rainbow")
             });
         });
@@ -61,7 +62,7 @@ function ClearCanvas(){
 function CreateCanvas(size){
     ClearCanvas();
     CreateGrid(size);
-    GridColor(color,false);
+    GridColor(color,"none");
 }
 
 function RandomColor(){
@@ -79,7 +80,7 @@ colorPicker.addEventListener("input" , (e) =>{
     colorBackup = color;
     console.log(color);
     console.log(prevColor);
-    GridColor(color,false);
+    GridColor(color,"none");
     eraserCheckbox.checked = false;
 });
 
@@ -96,17 +97,17 @@ resetBTn.addEventListener("click", () => {
     })
 });
 
-eraserCheckbox.addEventListener("change", () => {   
+eraserCheckbox.addEventListener("change", () => { 
     if(eraserCheckbox.checked){
         prevColor = color;
         color = "FFFFFF";
         
-        GridColor(color,false)
+        GridColor(color,"none")
         rainbowCheckbox.checked = false;
     }
     else{
         color = prevColor;
-        GridColor(color,false);
+        GridColor(color,"none");
         
     }
 
@@ -115,16 +116,17 @@ eraserCheckbox.addEventListener("change", () => {
 rainbowCheckbox.addEventListener("change", () => {   
     if(rainbowCheckbox.checked){
         prevColor = color;
-        GridColor(color,true);
+        GridColor(color,"rainbow");
         eraserCheckbox.checked = false;
     }
     else{
         color = prevColor;
-        GridColor(prevColor,false);
+        GridColor(prevColor,"none");
         
     }
 
 });
+
 
 
 
