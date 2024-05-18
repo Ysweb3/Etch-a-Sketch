@@ -59,9 +59,7 @@ input#eraser{
     transform: scale(1.2);
    
 }
-
-#rainbow-div{
-    
+#rainbow-div{  
     height: 20px;
     width: 60px;
 }
@@ -72,9 +70,7 @@ input#rainbow{
         
 }
 #rainbow:checked +#rainbow-div{
-    
     transform: scale(1.2);
-    
 }
 #slider-value{
     font-size: 25px;
@@ -86,7 +82,6 @@ input#rainbow{
     appearance: slider-vertical;
     cursor: pointer;
 }
-
 #container-range{
     display: flex;
     align-items: center;
@@ -95,9 +90,14 @@ input#rainbow{
 
 }
 #Reset-Btn:hover{ 
-    background-color: #1d96a99c
+    background-color: #1d96a9;
+    opacity: 1;
+    transform: scale(1.1);
+    
 }
 #Reset-Btn{
+    background-color: #1d96a9;
+    opacity:.9;
     border-radius: 10px;
     border: none;
     font-size: 15px;
